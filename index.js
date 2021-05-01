@@ -247,5 +247,5 @@ function generateHTML()
     //add final html to data
     htmlData += generateFinalHtml();
     //write data to file
-    fs.writeFileSync(generateFinalHtml,htmlData);
+    fs.writeFileSync(generatedHtmlFilePath,htmlData);
 }
