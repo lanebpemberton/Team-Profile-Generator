@@ -3,22 +3,44 @@
     text-align: center;
     color: white;
     height: 100px;
+    width: 100%;
+    margin: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBarTitle {
+    margin: auto;
+
 }
 
 body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0%;
+    height: 100%;
+}
 
+.cardBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .teamMemberCard {
-    width: 200px;
-    height: 425px;
+    width: 220px;
+    height: 250px;
+    background-color: #C6A9AE;
+    padding: 10px;
+    margin: 5%;
+    box-shadow: 5px 5px 3px #888888;
 }
 
 .teamMemberTitle {
-
+    color: white;
 }
 
 .teamMemberBody {
-    
+
 }
 

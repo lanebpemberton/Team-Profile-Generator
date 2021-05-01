@@ -191,11 +191,50 @@ function evaluateAdditionalTeamMemberResult(result)
     }
 }
 
+function generateInitialHTML()
+{
+    return `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Profile</title>
+        <link rel="stylesheet" href="./teamProfile.css">
+    </head>
+    <body>
+        <div class="teamNavBar">
+            <h1 class="navBarTitle">My Team</h2>
+        </div>
+        <div class="cardBody">`
+}
+
+function generateTeamMemberHtml(teamMember)
+{
+
+}
+
+function generateFinalHtml()
+{
+    return `    </div>
+    </body>
+    </html>`;
+}
+
 //loop through team members array and generate html
 function generateHTML()
 {
     //first create new file (overwrite existing if file exists)
     fs.writeFileSync(generatedHtmlFilePath,"");
+    //setup string to hold generated html
+    let htmlData = generateInitialHTML();
+    //loop through team members
+    for(var a in teamMembers)
+    {
+        htmlData += generateTeamMemberHtml(teamMembers[a]);
+    }
+    //add final html to data
+    htmlData += generateFinalHtml();
+    //write data to file
+    fs.writeFileSync(generateFinalHtml,htmlData);
 }
-
-//do something with answers and write to html
