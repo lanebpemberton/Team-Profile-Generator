@@ -60,19 +60,7 @@ inquirer
     //add manager to global team members object
     teamMembers.push(manager);
     //evaluate additional team members options
-    if(answers.additionalTeamMember === "Engineer")
-    {
-        //call add engineer prompts
-        addEngineer();
-    }else if(answers.additionalTeamMember === "Intern")
-    {
-        //call add intern prompts
-        addIntern();
-    }else
-    {
-        //should never run
-        generateHTML();
-    }
+    evaluateAdditionalTeamMemberResult(answers.additionalTeamMember);
   })
   .catch(error => {
       //boiler plate error handling from inquire
@@ -90,24 +78,24 @@ inquirer
 .prompt([
     //declaring my list of questions here
     {
-        name:"internName",
+        name:"engineerName",
         type:"input",
-        message:"Enter intern's name",
+        message:"Enter engineer's name",
     },
     {
-        name:"internID",
+        name:"engineerID",
         type:"input",
-        message:"Enter intern's employee ID",
+        message:"Enter engineer's employee ID",
     },
     {
-        name:"internEmail",
+        name:"engineerEmail",
         type:"input",
-        message:"Enter intern's email",
+        message:"Enter engineer's email",
     },
     {
-        name:"internSchool",
+        name:"engineerGithub",
         type:"input",
-        message:"Enter intern's school",
+        message:"Enter engineer's github username",
     },
     {
         name:"additionalTeamMember",
@@ -118,24 +106,11 @@ inquirer
 ])
 .then(answers => {
     //create new intern
-    let intern = new Intern(answers.internName, answers.internID, answers.internEmail, answers.internSchool);
+    let engineer = new Engineer(answers.engineerName, answers.engineerID, answers.engineerEmail, answers.engineerGithub);
     //add to global array
-    teamMembers.push(intern);
+    teamMembers.push(engineer);
     //evaluate additional team member
-    if(answers.additionalTeamMember === "Engineer")
-    {
-        //call add engineer prompts
-        addEngineer();
-    }else if(answers.additionalTeamMember === "Intern")
-    {
-        //call add intern prompts
-        addIntern();
-    }else
-    {
-        //finish with asking prompts and generate html
-        generateHTML();
-    }
-
+    evaluateAdditionalTeamMemberResult(answers.additionalTeamMember);
 })
 .catch(error => {
     //boiler plate error handling from inquire
@@ -186,19 +161,7 @@ inquirer
     //add to global array
     teamMembers.push(intern);
     //evaluate additional team member
-    if(answers.additionalTeamMember === "Engineer")
-    {
-        //call add engineer prompts
-        addEngineer();
-    }else if(answers.additionalTeamMember === "Intern")
-    {
-        //call add intern prompts
-        addIntern();
-    }else
-    {
-        //finish with asking prompts and generate html
-        generateHTML();
-    }
+    evaluateAdditionalTeamMemberResult(answers.additionalTeamMember);
 
 })
 .catch(error => {
@@ -209,6 +172,23 @@ inquirer
     // Something else went wrong
     }
 });
+}
+
+function evaluateAdditionalTeamMemberResult(result)
+{
+    if(result === "Engineer")
+    {
+        //call add engineer prompts
+        addEngineer();
+    }else if(result === "Intern")
+    {
+        //call add intern prompts
+        addIntern();
+    }else
+    {
+        //finish with asking prompts and generate html
+        generateHTML();
+    }
 }
 
 //loop through team members array and generate html
