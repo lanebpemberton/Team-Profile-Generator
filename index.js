@@ -55,10 +55,24 @@ inquirer
       },
   ])
   .then(answers => {
-    //first create new file (overwrite existing if file exists)
-    fs.writeFileSync(generatedHtmlFilePath,"");
-
-
+    //create manager
+    let manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOfficeNumber);
+    //add manager to global team members object
+    teamMembers.push(manager);
+    //evaluate additional team members options
+    if(answers.additionalTeamMember === "Engineer")
+    {
+        //call add engineer prompts
+        addEngineer();
+    }else if(answers.additionalTeamMember === "Intern")
+    {
+        //call add intern prompts
+        addIntern();
+    }else
+    {
+        //should never run
+        generateHTML();
+    }
   })
   .catch(error => {
       //boiler plate error handling from inquire
@@ -200,7 +214,8 @@ inquirer
 //loop through team members array and generate html
 function generateHTML()
 {
-
+    //first create new file (overwrite existing if file exists)
+    fs.writeFileSync(generatedHtmlFilePath,"");
 }
 
 //do something with answers and write to html
