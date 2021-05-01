@@ -213,13 +213,13 @@ function generateTeamMemberHtml(teamMember)
 {
     return `        <div class="teamMemberCard">
     <div class="teamMemberTitle">
-        <h3>${} - ${}</h3>
+        <h3>${teamMember.getName()} - ${teamMember.getRole()}</h3>
     </div>
     <div class="teamMemberBody">
         <ul>
-            <li>ID:1</li>
-            <li>Name: Lane</li>
-            <li>Email: sldfds</li>
+            <li>ID:${teamMember.getId()}</li>
+            <li>Email: <a href="mailto:${teamMember.getEmail()}">${teamMember.getEmail()}</a></li>
+            ${teamMember.getRoleHtml()}
         </ul>
     </div>
 </div>`;
