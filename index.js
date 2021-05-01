@@ -211,7 +211,18 @@ function generateInitialHTML()
 
 function generateTeamMemberHtml(teamMember)
 {
-
+    return `        <div class="teamMemberCard">
+    <div class="teamMemberTitle">
+        <h3>${} - ${}</h3>
+    </div>
+    <div class="teamMemberBody">
+        <ul>
+            <li>ID:1</li>
+            <li>Name: Lane</li>
+            <li>Email: sldfds</li>
+        </ul>
+    </div>
+</div>`;
 }
 
 function generateFinalHtml()
